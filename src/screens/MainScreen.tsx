@@ -20,7 +20,7 @@ import { Colors } from '../constants/Theme';
 // We want the monkey's CENTRE at ≈ 38 % from the top of the full screen
 // (= centre of the scene area), with its lower third submerged in the water.
 // Using absolute positioning so the percentage refers to screen HEIGHT, not width.
-const MONKEY_SIZE = 310;
+const MONKEY_SIZE = 320;
 
 export default function MainScreen() {
   const { messages, isThinking, monkeyState, streamingContent, sendMessage, setUserId } =
@@ -171,10 +171,11 @@ const styles = StyleSheet.create({
     right: 0,
     bottom: 0,
     alignItems: 'center',
-    // 22 % from the top → monkey centre lands at ≈ 38 % from top,
-    // squarely in the middle of the visible onsen scene.
+    // 30 % of parent WIDTH (390pt) = 117pt from top.
+    // Monkey centre lands at 117 + 160 = 277pt — nicely centred in the
+    // visible scene above the chat panel (0–405pt on a 844pt iPhone).
     justifyContent: 'flex-start',
-    paddingTop: '23%',
+    paddingTop: '30%',
   },
 
   monkeyWrapper: {
@@ -190,8 +191,9 @@ const styles = StyleSheet.create({
     bottom: 0,
     left: -44,
     right: -44,
-    // Submerge the lower 40 % of the monkey
-    height: MONKEY_SIZE * 0.65,
+    // Submerge roughly 62 % — waterline sits at chest level,
+    // leaving head + arms + crossed hands clearly visible above water.
+    height: MONKEY_SIZE * 0.62,
     // Sampled from the background: desaturated teal-grey, gentle opacity
     backgroundColor: 'rgba(128, 158, 176, 0.28)',
     borderTopLeftRadius: 90,

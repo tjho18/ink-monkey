@@ -5,7 +5,7 @@ const BG = require('../../../assets/background/onsen-bg.png');
 
 // Pan the background image upward so the open hot-spring water
 // sits at the same level as the monkey (not the rocks above it).
-const SHIFT_UP = 140;
+const SHIFT_UP = 120;
 
 export default function OnsenBackground({ children }: { children: React.ReactNode }) {
   return (
